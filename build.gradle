@@ -23,6 +23,10 @@ dependencies {
     testCompile group : 'org.testng', name : 'testng', version: '6.8'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
