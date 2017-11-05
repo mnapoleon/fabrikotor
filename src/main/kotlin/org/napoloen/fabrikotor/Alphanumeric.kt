@@ -8,6 +8,10 @@ class Alphanumeric {
 
   fun randomInt(): Int = random.nextInt(1000)
 
+  fun randomLong(): Long = random.nextLong()
+
+  fun randomDouble(): Double = random.nextDouble()
+
   fun numerify(pattern: String): String {
     return pattern.map { it ->
       when (it) {

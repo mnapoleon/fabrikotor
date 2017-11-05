@@ -54,4 +54,25 @@ class AlphanumericTestSuite : BaseTestSuite() {
     assert(list.size == 10)
     list.forEach { x -> assert(x.matches(Regex("\\w{3}\\d{3}"))) }
   }
+
+  @Test
+  fun testDefaultInteger() {
+    val integer = alpha.randomInt()
+    //if (debugEnabled) logger.debug("Checking default integer function. Should return random integer below 1000 : " + integer)
+    assert(integer in (0 .. 1000))
+    assert(integer is Int)
+  }
+
+  @Test
+  fun testDefaultLong() {
+    val longNumber = alpha.randomLong()
+    //if (debugEnabled) logger.debug("Checking default longNumber function. Should return random longNumber below 1000 : " + longNumber)
+    assert(longNumber is Long)
+  }
+
+  @Test
+  fun testDefaultDouble() {
+    val doubleNumber = alpha.randomDouble()
+    assert(doubleNumber is Double)
+  }
 }
