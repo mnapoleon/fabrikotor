@@ -75,4 +75,40 @@ class AlphanumericTestSuite : BaseTestSuite() {
     val doubleNumber = alpha.randomDouble()
     assert(doubleNumber is Double)
   }
+
+  @Test
+  fun testDefaultFloat() {
+    val float = alpha.randomFloat()
+    //if (debugEnabled) logger.debug("Checking default float function. Should return random float below 1000 : " + float)
+    assert(float > 0 && float < 1000)
+    assert(float is Float)
+  }
+
+  @Test
+  fun testDefaultGausian() {
+    val gausian = alpha.randomGausian()
+    //if (debugEnabled) logger.debug("Checking default gausian function. Should return random gausian below 1000 : " + gausian)
+    assert(gausian < 1000)
+    assert(gausian is Double)
+  }
+
+  @Test
+  fun testDefaultBoolean() {
+    var trueCount = 0
+    var falseCount = 0
+    for (i in 0 .. 100) {
+      val boolean = alpha.randomBoolean()
+      if (boolean) trueCount += 1
+      else falseCount += 1
+    }
+    assert(trueCount > 0 && falseCount > 0)
+  }
+
+  @Test
+  fun testDefaultString() {
+    val string = alpha.randomString()
+    //if (debugEnabled) logger.debug("Checking default string function. Should return random string below 30 : " + string)
+    assert(string.length == 30)
+    assert(string is String)
+  }
 }

@@ -12,6 +12,14 @@ class Alphanumeric {
 
   fun randomDouble(): Double = random.nextDouble()
 
+  fun randomFloat(): Float = random.nextFloat()
+
+  fun randomGausian(): Double = random.nextGaussian()
+
+  fun randomBoolean(): Boolean = random.nextBoolean()
+
+  fun randomString(): String = string("0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_", 30)
+
   fun numerify(pattern: String): String {
     return pattern.map { it ->
       when (it) {
@@ -39,4 +47,11 @@ class Alphanumeric {
     return (1..amount).map { i -> letterify(pattern) }
   }
 
+  private fun string(charSequence: CharSequence, max: Int):String {
+    val builder = StringBuilder()
+    (1 .. max).forEach { it ->
+      builder.append(charSequence[random.nextInt(charSequence.length - 1)])
+    }
+    return builder.toString()
+  }
 }
