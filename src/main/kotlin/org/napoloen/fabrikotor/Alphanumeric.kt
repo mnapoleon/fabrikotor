@@ -8,17 +8,51 @@ class Alphanumeric {
 
   fun randomInt(): Int = random.nextInt(1000)
 
+  fun randomInt(max: Int): Int = random.nextInt(max)
+
+  fun randomInt(min: Int, max: Int): Int = random.nextInt(max - min) + min
+
+  fun randomIntsRange(min: Int, max: Int, stepValue: Int): List<Int> {
+    if (stepValue <= 0) throw IllegalArgumentException("Step should be more then 0")
+    return (min .. max).step(stepValue).toList()
+  }
+
   fun randomLong(): Long = random.nextLong()
+
+  fun randomLong(max: Long): Long = randomLong(2147483648L, max)
+
+  fun randomLong(min: Long, max: Long): Long = min + (Math.random() * (max - min)).toLong()
 
   fun randomDouble(): Double = random.nextDouble()
 
+  fun randomDouble(max: Double): Double = randomDouble(Double.MIN_VALUE, max)
+
+  fun randomDouble(min: Double, max: Double): Double = min + random.nextDouble() * (max - min)
+
   fun randomFloat(): Float = random.nextFloat()
+
+  fun randomFloat(max: Float): Float = randomFloat(0f, max)
+
+  fun randomFloat(min: Float, max: Float): Float = min + random.nextFloat() * (max - min)
 
   fun randomGausian(): Double = random.nextGaussian()
 
   fun randomBoolean(): Boolean = random.nextBoolean()
 
   fun randomString(): String = string("0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_", 30)
+
+  fun randomString(length: Int): String = randomString("0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_", length)
+
+  fun randomString(charSeq: String, max: Int): String = string(charSeq, max)
+
+  fun randomStrings(): List<String> = randomStrings(5, 100, 100)
+
+  fun randomStrings(minLength: Int, maxLength: Int, amount: Int): List<String> {
+    if (minLength != maxLength )
+      return (1 .. amount).map { i -> randomString(randomInt(minLength, maxLength)) }
+    else
+      return (1 .. amount).map { i -> randomString(minLength) }
+  }
 
   fun numerify(pattern: String): String {
     return pattern.map { it ->

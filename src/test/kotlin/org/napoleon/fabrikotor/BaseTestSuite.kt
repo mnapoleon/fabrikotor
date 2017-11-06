@@ -1,8 +1,10 @@
 package org.napoleon.fabrikotor
 
-import org.napoloen.fabrikotor.Alphanumeric
+import org.napoloen.fabrikotor.*
 
 open class BaseTestSuite() {
 
-    val alpha:Alphanumeric = Alphanumeric();
+    val util:UtilityService = UtilityService()
+    val alpha:Alphanumeric = Alphanumeric()
+
 }
