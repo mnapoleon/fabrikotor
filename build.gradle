@@ -20,6 +20,19 @@ repositories {
     jcenter()
 }
 
+sourceSets {
+    main {
+        kotlin {
+            srcDirs = ['src/kotlin']
+        }
+    }
+    test {
+        kotlin {
+            srcDirs = ['test/kotlin']
+        }
+    }
+}
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     testCompile group : 'org.testng', name : 'testng', version: '6.8'
@@ -34,4 +47,9 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
 }
