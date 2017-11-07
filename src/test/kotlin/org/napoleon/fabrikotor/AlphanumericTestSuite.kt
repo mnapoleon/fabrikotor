@@ -130,7 +130,7 @@ class AlphanumericTestSuite : BaseTestSuite() {
   @Test
   fun testCustomStringsList() {
     val strings = alpha.randomStrings(10, 10, 20)
-    assert(strings.size == 20)
+    assert(strings.size == 21)
     strings.forEach{string -> assert(string.length >= 10 && string.length <= 10)}
   }
 
