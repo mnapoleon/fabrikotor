@@ -1,6 +1,11 @@
 group 'org.napoleon'
 version '1.0-SNAPSHOT'
 
+plugins {
+    id 'net.saliman.cobertura' version '2.3.1'
+    id 'com.github.kt3k.coveralls' version '2.8.2'
+}
+
 buildscript {
     ext.kotlin_version = '1.1.51'
 
@@ -41,7 +46,3 @@ test {
     useTestNG()
 }
 
-plugins {
-    id 'net.saliman.cobertura' version '2.3.1'
-    id 'com.github.kt3k.coveralls' version '2.8.2'
-}
