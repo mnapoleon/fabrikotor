@@ -16,6 +16,10 @@ plugins {
     id 'com.github.kt3k.coveralls' version '2.8.2'
 }
 
+coveralls {
+    sourceDirs += ['src/main/kotlin']
+}
+
 group 'org.napoleon'
 version '1.0-SNAPSHOT'
 
