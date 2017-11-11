@@ -201,6 +201,55 @@ class AlphanumericTestSuite : BaseTestSuite() {
       val generatedStream = alpha.randomIntsRange(min, max, step)
       assert(expectedResult == generatedStream)
     }
+  }
 
+  @DataProvider(name = "doubleRangeWithStep")
+  fun doubleRangeWithStep(): Array<Array<out Any>> {
+    return arrayOf(
+        arrayOf(1, 10, 1, listOf(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)),
+        arrayOf(1, 10, 2, listOf(1.0, 3.0, 5.0, 7.0, 9.0)),
+        arrayOf(1, 3, 0.5, listOf(1.0, 1.5, 2.0, 2.5, 3.0)),
+        arrayOf(1, 3, -1, listOf(1.0, 1.5, 2.0, 2.5, -1.0)),
+        arrayOf(1, 3, 0, listOf(1.0, 1.5, 2.0, 2.5, -1.0))
+    )
+  }
+
+  @Test(dataProvider = "doubleRangeWithStep")
+  fun testDoubleRangeWithStep(min: Double, max: Double, step: Double, expectedResult: List<Double>) {
+    if (step <= 0) {
+      try {
+        alpha.randomDoublesRange(min, max, step)
+      } catch (e: IllegalArgumentException) {
+        assert(e.message == "Step should be more then 0")
+      }
+    } else {
+      val generatedStream = alpha.randomDoublesRange(min, max, step)
+      assert(expectedResult == generatedStream)
+    }
+  }
+
+  @DataProvider(name = "floatRangeWithStep")
+  fun floatRangeWithStep(): Array<Array<Any>> {
+    return arrayOf(
+        arrayOf(1.0f, 10.0f, 1.0f, listOf(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f)),
+        arrayOf(1.0f, 10.0f, 2.0f, listOf(1.0f, 3.0f, 5.0f, 7.0f, 9.0f)),
+        arrayOf(1.0f, 3.0f, 0.5f, listOf(1.0f, 1.5f, 2.0f, 2.5f, 3.0f)),
+        arrayOf(1.0f, 3.0f, 0.0f, listOf(1.0f, 1.5f, 2.0f, 2.5f, 3.0f)),
+        arrayOf(1.0f, 3.0f, -1.0f, listOf(1.0f, 1.5f, 2.0f, 2.5f, 3.0f))
+    )
+  }
+
+  @Test(dataProvider = "floatRangeWithStep")
+  fun testFloatRangeWithStep(min: Float, max: Float, step: Float, expectedResult: List<Float>) {
+    if (step <= 0) {
+      try {
+        alpha.randomFloatsRange(min, max, step)
+      } catch (e: IllegalArgumentException) {
+        assert(e.message == "Step should be more then 0")
+      }
+    } else {
+      val generatedStream = alpha.randomFloatsRange(min, max, step)
+      assert(expectedResult ==generatedStream)
+    }
   }
 }

@@ -29,11 +29,21 @@ class Alphanumeric {
 
   fun randomDouble(min: Double, max: Double): Double = min + random.nextDouble() * (max - min)
 
+  fun randomDoublesRange(min: Double, max: Double, stepValue: Double): List<Double> {
+    if (stepValue <= 0) throw IllegalArgumentException("Step should be more then 0")
+    return (min .. max).step(stepValue).toList()
+  }
+
   fun randomFloat(): Float = random.nextFloat()
 
   fun randomFloat(max: Float): Float = randomFloat(0f, max)
 
   fun randomFloat(min: Float, max: Float): Float = min + random.nextFloat() * (max - min)
+
+  fun randomFloatsRange(min: Float, max: Float, stepValue: Float): List<Float> {
+    if (stepValue <= 0) throw IllegalArgumentException("Step should be more then 0")
+    return (min .. max).step(stepValue).toList()
+  }
 
   fun randomGausian(): Double = random.nextGaussian()
 
@@ -87,5 +97,29 @@ class Alphanumeric {
       builder.append(charSequence[random.nextInt(charSequence.length - 1)])
     }
     return builder.toString()
+  }
+
+  infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
+    require(start.isFinite())
+    require(endInclusive.isFinite())
+    require(step > 0.0) { "Step must be positive, was: $step." }
+    val sequence = generateSequence(start) { previous ->
+      if (previous == Double.POSITIVE_INFINITY) return@generateSequence null
+      val next = previous + step
+      if (next > endInclusive) null else next
+    }
+    return sequence.asIterable()
+  }
+
+  infix fun ClosedRange<Float>.step(step: Float): Iterable<Float> {
+    require(start.isFinite())
+    require(endInclusive.isFinite())
+    require(step > 0.0) { "Step must be positive, was: $step." }
+    val sequence = generateSequence(start) { previous ->
+      if (previous == Float.POSITIVE_INFINITY) return@generateSequence null
+      val next = previous + step
+      if (next > endInclusive) null else next
+    }
+    return sequence.asIterable()
   }
 }
