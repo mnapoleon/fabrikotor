@@ -64,10 +64,28 @@ class AlphanumericTestSuite : BaseTestSuite() {
   }
 
   @Test
+  fun testMaxInteger() {
+    val testMaxValue = 100
+    val integer = alpha.randomInt(testMaxValue)
+    assert(integer in (0 .. testMaxValue))
+    assert(util.isLess(integer, testMaxValue))
+    assert(integer is Int)
+  }
+
+  @Test
   fun testDefaultLong() {
     val longNumber = alpha.randomLong()
     //if (debugEnabled) logger.debug("Checking default longNumber function. Should return random longNumber below 1000 : " + longNumber)
     assert(longNumber is Long)
+  }
+
+  @Test
+  fun testMaxLong() {
+    val testMaxValue = 100000000000L
+    val longValue = alpha.randomLong(testMaxValue)
+    assert(longValue in (0 .. testMaxValue))
+    assert(util.isLess(longValue, testMaxValue))
+    assert(longValue is Long)
   }
 
   @Test
@@ -77,11 +95,27 @@ class AlphanumericTestSuite : BaseTestSuite() {
   }
 
   @Test
+  fun testMaxDouble() {
+    val testMaxValue = 5600.01234
+    val doubleValue = alpha.randomDouble(testMaxValue)
+    assert(util.isLess(doubleValue, testMaxValue))
+    assert(doubleValue is Double)
+  }
+
+  @Test
   fun testDefaultFloat() {
     val float = alpha.randomFloat()
     //if (debugEnabled) logger.debug("Checking default float function. Should return random float below 1000 : " + float)
     assert(float > 0 && float < 1000)
     assert(float is Float)
+  }
+
+  @Test
+  fun testMaxFloat() {
+    val testMaxValue = 5600.01234f
+    val floatValue = alpha.randomFloat(testMaxValue)
+    assert(util.isLess(floatValue, testMaxValue))
+    assert(floatValue is Float)
   }
 
   @Test
@@ -166,10 +200,10 @@ class AlphanumericTestSuite : BaseTestSuite() {
 
     fun calculate(minValue: Any, maxValue: Any): Any =
       when {
-        min is Int && max is Int -> alpha.randomInt(min, max)
-        min is Double && max is Double -> alpha.randomDouble(min, max)
-        min is Float && max is Float -> alpha.randomFloat(min, max)
-        min is Long && max is Long -> alpha.randomLong(min, max)
+        minValue is Int && maxValue is Int -> alpha.randomInt(minValue, maxValue)
+        minValue is Double && maxValue is Double -> alpha.randomDouble(minValue, maxValue)
+        minValue is Float && maxValue is Float -> alpha.randomFloat(minValue, maxValue)
+        minValue is Long && maxValue is Long -> alpha.randomLong(minValue, maxValue)
         else -> "Not supported"
       }
     val actualNumber = calculate(min, max)
@@ -251,5 +285,32 @@ class AlphanumericTestSuite : BaseTestSuite() {
       val generatedStream = alpha.randomFloatsRange(min, max, step)
       assert(expectedResult ==generatedStream)
     }
+  }
+
+  @DataProvider(name = "numbersCustomTypes")
+  fun numbersCustomTypes(): Array<Array<out Any>> {
+    return arrayOf(arrayOf(100, Integer::class),
+        arrayOf(100.10, Double::class),
+        arrayOf(100.10f, Float::class),
+        arrayOf(100000000000L, Long::class)
+    )
+  }
+
+  @Test(dataProvider = "numbersCustomTypes")
+  fun testCustomNumberType(maxValue: Any, numberType: Any) {
+
+    fun calculate(randomNumber: Any) =
+      when (randomNumber){
+        is Int -> alpha.randomInt(randomNumber)
+        is Double -> alpha.randomDouble(randomNumber)
+        is Float -> alpha.randomFloat(randomNumber)
+        is Long -> alpha.randomLong(randomNumber)
+        else -> "Type not supported"
+      }
+
+    val result = calculate(maxValue)
+    //if (debugEnabled) logger.debug("Checking custom number with " + numberType + " type function. Should return with specific type and below specified value : ")
+    assert(result::class == numberType)
+    assert(util.isLess(result, maxValue))
   }
 }
