@@ -64,6 +64,19 @@ class Alphanumeric {
       return (1 .. amount).map { i -> randomString(minLength) }
   }
 
+  fun randomHash(): String = string("0123456789abcdef", 40)
+
+  fun randomHash(length: Int): String = string("0123456789abcdef", length)
+
+  fun randomHashList(): List<String> = randomHashList(40,40, 100)
+
+  fun randomHashList(minLength: Int, maxLength: Int, amount: Int): List<String> {
+    if (minLength != maxLength )
+      return (1 .. amount).map { i -> randomHash(randomInt(minLength, maxLength)) }
+    else
+      return (1 .. amount).map { i -> randomHash(minLength) }
+  }
+
   fun numerify(pattern: String): String {
     return pattern.map { it ->
       when (it) {

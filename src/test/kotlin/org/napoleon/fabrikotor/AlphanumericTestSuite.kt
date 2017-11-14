@@ -313,4 +313,25 @@ class AlphanumericTestSuite : BaseTestSuite() {
     assert(result::class == numberType)
     assert(util.isLess(result, maxValue))
   }
+
+  @Test
+  fun testHash() {
+    val hash = alpha.randomHash()
+    //if (debugEnabled) logger.debug("Checking random hash number with default length:  " + hash)
+    assert(hash.length == 40)
+    val customLengthHash = alpha.randomHash(10)
+    //if (debugEnabled) logger.debug("Checking random hash number with length = 10:  " + customLengthHash)
+    assert(customLengthHash.length == 10)
+  }
+
+  @Test
+  fun testHashList() {
+    val defaultList = alpha.randomHashList()
+    assert(defaultList.size == 100)
+    defaultList.forEach{x -> assert(x.length == 40)}
+    val customList = alpha.randomHashList(20, 40, 30)
+    assert(customList.size == 30)
+    customList.forEach{x -> assert(x.length >= 20 && x.length <= 40)}
+  }
+
 }
