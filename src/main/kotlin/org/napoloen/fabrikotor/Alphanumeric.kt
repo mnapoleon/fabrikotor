@@ -23,6 +23,11 @@ class Alphanumeric {
 
   fun randomLong(min: Long, max: Long): Long = min + (Math.random() * (max - min)).toLong()
 
+  fun randomLongsRange(min: Long, max: Long, stepValue: Long): List<Long> {
+    if (stepValue <= 0) throw IllegalArgumentException("Step should be more then 0")
+    return (min .. max).step(stepValue).toList()
+  }
+
   fun randomDouble(): Double = random.nextDouble()
 
   fun randomDouble(max: Double): Double = randomDouble(Double.MIN_VALUE, max)
@@ -76,6 +81,26 @@ class Alphanumeric {
     else
       return (1 .. amount).map { i -> randomHash(minLength) }
   }
+
+  fun randomGuid(): String = randomGuid(5)
+
+  fun randomGuid(version: Int): String {
+    val guidPool = "abcdef1234567890"
+    val variantPool = "ab89"
+    return string(guidPool, 8) + "-" +
+        string(guidPool, 4) + "-" +
+        // The Version
+        version +
+        string(guidPool, 3) + "-" +
+        // The Variant
+        string(variantPool, 1) +
+        string(guidPool, 3) + "-" +
+        string(guidPool, 12)
+  }
+
+  fun randomGuidList(): List<String> = (1 .. 100).map { i -> randomGuid(5)}
+
+  fun randomGuidList(version: Int, amount: Int): List<String> = (1 .. amount).map { i -> randomGuid(version) }
 
   fun numerify(pattern: String): String {
     return pattern.map { it ->
