@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Alphanumeric.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fabrikotor</a> &gt; <a href="index.source.html" class="el_package">org.napoloen.fabrikotor</a> &gt; <span class="el_source">Alphanumeric.kt</span></div><h1>Alphanumeric.kt</h1><pre class="source lang-java linenums">package org.napoloen.fabrikotor
+
+import java.util.Random
+
+<span class="fc" id="L5">class Alphanumeric {</span>
+
+<span class="fc" id="L7">  private val random = Random()</span>
+
+<span class="fc" id="L9">  fun randomInt(): Int = random.nextInt(1000)</span>
+
+<span class="fc" id="L11">  fun randomInt(max: Int): Int = random.nextInt(max)</span>
+
+<span class="fc" id="L13">  fun randomInt(min: Int, max: Int): Int = random.nextInt(max - min) + min</span>
+
+  fun randomIntsRange(min: Int, max: Int, stepValue: Int): List&lt;Int&gt; {
+<span class="fc bfc" id="L16" title="All 2 branches covered.">    if (stepValue &lt;= 0) throw IllegalArgumentException(&quot;Step should be more then 0&quot;)</span>
+<span class="fc" id="L17">    return (min .. max).step(stepValue).toList()</span>
+  }
+
+<span class="fc" id="L20">  fun randomLong(): Long = random.nextLong()</span>
+
+<span class="fc" id="L22">  fun randomLong(max: Long): Long = randomLong(2147483648L, max)</span>
+
+<span class="fc" id="L24">  fun randomLong(min: Long, max: Long): Long = min + (Math.random() * (max - min)).toLong()</span>
+
+  fun randomLongsRange(min: Long, max: Long, stepValue: Long): List&lt;Long&gt; {
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">    if (stepValue &lt;= 0) throw IllegalArgumentException(&quot;Step should be more then 0&quot;)</span>
+<span class="fc" id="L28">    return (min .. max).step(stepValue).toList()</span>
+  }
+
+<span class="fc" id="L31">  fun randomDouble(): Double = random.nextDouble()</span>
+
+<span class="fc" id="L33">  fun randomDouble(max: Double): Double = randomDouble(Double.MIN_VALUE, max)</span>
+
+<span class="fc" id="L35">  fun randomDouble(min: Double, max: Double): Double = min + random.nextDouble() * (max - min)</span>
+
+  fun randomDoublesRange(min: Double, max: Double, stepValue: Double): List&lt;Double&gt; {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    if (stepValue &lt;= 0) throw IllegalArgumentException(&quot;Step should be more then 0&quot;)</span>
+<span class="fc" id="L39">    return (min .. max).step(stepValue).toList()</span>
+  }
+
+<span class="fc" id="L42">  fun randomFloat(): Float = random.nextFloat()</span>
+
+<span class="fc" id="L44">  fun randomFloat(max: Float): Float = randomFloat(0f, max)</span>
+
+<span class="fc" id="L46">  fun randomFloat(min: Float, max: Float): Float = min + random.nextFloat() * (max - min)</span>
+
+  fun randomFloatsRange(min: Float, max: Float, stepValue: Float): List&lt;Float&gt; {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (stepValue &lt;= 0) throw IllegalArgumentException(&quot;Step should be more then 0&quot;)</span>
+<span class="fc" id="L50">    return (min .. max).step(stepValue).toList()</span>
+  }
+
+<span class="fc" id="L53">  fun randomGausian(): Double = random.nextGaussian()</span>
+
+<span class="fc" id="L55">  fun randomBoolean(): Boolean = random.nextBoolean()</span>
+
+<span class="fc" id="L57">  fun randomString(): String = string(&quot;0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&quot;, 30)</span>
+
+<span class="fc" id="L59">  fun randomString(length: Int): String = randomString(&quot;0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&quot;, length)</span>
+
+<span class="fc" id="L61">  fun randomString(charSeq: String, max: Int): String = string(charSeq, max)</span>
+
+<span class="fc" id="L63">  fun randomStrings(): List&lt;String&gt; = randomStrings(5, 100, 100)</span>
+
+  fun randomStrings(minLength: Int, maxLength: Int, amount: Int): List&lt;String&gt; {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (minLength != maxLength )</span>
+<span class="fc" id="L67">      return (1 .. amount).map { i -&gt; randomString(randomInt(minLength, maxLength)) }</span>
+    else
+<span class="fc" id="L69">      return (1 .. amount).map { i -&gt; randomString(minLength) }</span>
+  }
+
+<span class="fc" id="L72">  fun randomHash(): String = string(&quot;0123456789abcdef&quot;, 40)</span>
+
+<span class="fc" id="L74">  fun randomHash(length: Int): String = string(&quot;0123456789abcdef&quot;, length)</span>
+
+<span class="fc" id="L76">  fun randomHashList(): List&lt;String&gt; = randomHashList(40,40, 100)</span>
+
+  fun randomHashList(minLength: Int, maxLength: Int, amount: Int): List&lt;String&gt; {
+<span class="fc bfc" id="L79" title="All 2 branches covered.">    if (minLength != maxLength )</span>
+<span class="fc" id="L80">      return (1 .. amount).map { i -&gt; randomHash(randomInt(minLength, maxLength)) }</span>
+    else
+<span class="fc" id="L82">      return (1 .. amount).map { i -&gt; randomHash(minLength) }</span>
+  }
+
+<span class="fc" id="L85">  fun randomGuid(): String = randomGuid(5)</span>
+
+  fun randomGuid(version: Int): String {
+<span class="fc" id="L88">    val guidPool = &quot;abcdef1234567890&quot;</span>
+<span class="fc" id="L89">    val variantPool = &quot;ab89&quot;</span>
+<span class="fc" id="L90">    return string(guidPool, 8) + &quot;-&quot; +</span>
+<span class="fc" id="L91">        string(guidPool, 4) + &quot;-&quot; +</span>
+        // The Version
+<span class="fc" id="L93">        version +</span>
+<span class="fc" id="L94">        string(guidPool, 3) + &quot;-&quot; +</span>
+        // The Variant
+<span class="fc" id="L96">        string(variantPool, 1) +</span>
+<span class="fc" id="L97">        string(guidPool, 3) + &quot;-&quot; +</span>
+<span class="fc" id="L98">        string(guidPool, 12)</span>
+  }
+
+<span class="fc" id="L101">  fun randomGuidList(): List&lt;String&gt; = (1 .. 100).map { i -&gt; randomGuid(5)}</span>
+
+<span class="fc" id="L103">  fun randomGuidList(version: Int, amount: Int): List&lt;String&gt; = (1 .. amount).map { i -&gt; randomGuid(version) }</span>
+
+  fun numerify(pattern: String): String {
+<span class="fc" id="L106">    return pattern.map { it -&gt;</span>
+<span class="fc" id="L107">      when (it) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        '#' -&gt; random.nextInt(10).toString()</span>
+<span class="fc" id="L109">        else -&gt; it</span>
+      }
+<span class="fc" id="L111">    }.joinToString(separator = &quot;&quot; )</span>
+  }
+
+  fun numerifyList(pattern: String, amount: Int): List&lt;String&gt; {
+<span class="fc" id="L115">    return (1..amount).map { i -&gt; numerify(pattern) }</span>
+  }
+
+  fun letterify(pattern: String): String {
+<span class="fc" id="L119">    val chars = (('a' .. 'z') + ('A' .. 'Z')).toList().toCharArray()</span>
+<span class="fc" id="L120">    return pattern.map { it -&gt;</span>
+<span class="fc" id="L121">      when (it) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        '?' -&gt; chars[random.nextInt(chars.size)]</span>
+<span class="fc" id="L123">        else -&gt; it</span>
+      }
+<span class="fc" id="L125">    }.joinToString(separator = &quot;&quot;)</span>
+  }
+
+  fun letterifyList(pattern: String, amount: Int): List&lt;String&gt; {
+<span class="fc" id="L129">    return (1..amount).map { i -&gt; letterify(pattern) }</span>
+  }
+
+  private fun string(charSequence: CharSequence, max: Int):String {
+<span class="fc" id="L133">    val builder = StringBuilder()</span>
+<span class="fc" id="L134">    (1 .. max).forEach { it -&gt;</span>
+<span class="fc" id="L135">      builder.append(charSequence[random.nextInt(charSequence.length - 1)])</span>
+<span class="fc" id="L136">    }</span>
+<span class="fc" id="L137">    return builder.toString()</span>
+  }
+
+  infix fun ClosedRange&lt;Double&gt;.step(step: Double): Iterable&lt;Double&gt; {
+<span class="pc bpc" id="L141" title="3 of 6 branches missed.">    require(start.isFinite())</span>
+<span class="pc bpc" id="L142" title="3 of 6 branches missed.">    require(endInclusive.isFinite())</span>
+<span class="pc bpc" id="L143" title="2 of 4 branches missed.">    require(step &gt; 0.0) { &quot;Step must be positive, was: $step.&quot; }</span>
+<span class="fc" id="L144">    val sequence = generateSequence(start) { previous -&gt;</span>
+<span class="pc bpc" id="L145" title="2 of 4 branches missed.">      if (previous == Double.POSITIVE_INFINITY) return@generateSequence null</span>
+<span class="fc" id="L146">      val next = previous + step</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">      if (next &gt; endInclusive) null else next</span>
+    }
+<span class="fc" id="L149">    return sequence.asIterable()</span>
+  }
+
+  infix fun ClosedRange&lt;Float&gt;.step(step: Float): Iterable&lt;Float&gt; {
+<span class="pc bpc" id="L153" title="3 of 6 branches missed.">    require(start.isFinite())</span>
+<span class="pc bpc" id="L154" title="3 of 6 branches missed.">    require(endInclusive.isFinite())</span>
+<span class="pc bpc" id="L155" title="2 of 4 branches missed.">    require(step &gt; 0.0) { &quot;Step must be positive, was: $step.&quot; }</span>
+<span class="fc" id="L156">    val sequence = generateSequence(start) { previous -&gt;</span>
+<span class="pc bpc" id="L157" title="2 of 4 branches missed.">      if (previous == Float.POSITIVE_INFINITY) return@generateSequence null</span>
+<span class="fc" id="L158">      val next = previous + step</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">      if (next &gt; endInclusive) null else next</span>
+    }
+<span class="fc" id="L161">    return sequence.asIterable()</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

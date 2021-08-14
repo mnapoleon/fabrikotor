@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.napoleon.fabrikotor.AlphanumericTestSuite" tests="60" skipped="0" failures="0" errors="0" timestamp="2021-08-14T02:36:43" hostname="fv-az132-863" time="0.167">
+  <properties/>
+  <testcase name="testCustomNumberType[0](100, class java.lang.Integer (Kotlin reflection is not available))" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.007"/>
+  <testcase name="testCustomNumberType[1](100.1, double (Kotlin reflection is not available))" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testCustomNumberType[2](100.1, float (Kotlin reflection is not available))" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testCustomNumberType[3](100000000000, long (Kotlin reflection is not available))" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testCustomString" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.004"/>
+  <testcase name="testCustomStringWithSpecificCharSet[0](aaaa, 10)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testCustomStringWithSpecificCharSet[1](1234567890, 100)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testCustomStringWithSpecificCharSet[2](0123456789abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_, 500)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.003"/>
+  <testcase name="testCustomStringWithSpecificCharSet[3](!@#$%^&amp;*()_+{}&quot;|:?&gt;&lt;, 30)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testCustomStringsList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDefaultBoolean" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDefaultDouble" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testDefaultFloat" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDefaultGausian" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testDefaultInteger" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDefaultLong" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDefaultString" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testDefaultStringsList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.003"/>
+  <testcase name="testDoubleRangeWithStep[0](1, 10, 1, [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.032"/>
+  <testcase name="testDoubleRangeWithStep[1](1, 10, 2, [1.0, 3.0, 5.0, 7.0, 9.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testDoubleRangeWithStep[2](1, 3, 0.5, [1.0, 1.5, 2.0, 2.5, 3.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testDoubleRangeWithStep[3](1, 3, -1, [1.0, 1.5, 2.0, 2.5, -1.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testDoubleRangeWithStep[4](1, 3, 0, [1.0, 1.5, 2.0, 2.5, -1.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testFloatRangeWithStep[0](1.0, 10.0, 1.0, [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.003"/>
+  <testcase name="testFloatRangeWithStep[1](1.0, 10.0, 2.0, [1.0, 3.0, 5.0, 7.0, 9.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testFloatRangeWithStep[2](1.0, 3.0, 0.5, [1.0, 1.5, 2.0, 2.5, 3.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testFloatRangeWithStep[3](1.0, 3.0, 0.0, [1.0, 1.5, 2.0, 2.5, 3.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testFloatRangeWithStep[4](1.0, 3.0, -1.0, [1.0, 1.5, 2.0, 2.5, 3.0])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testGuid" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.006"/>
+  <testcase name="testGuidList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.003"/>
+  <testcase name="testHash" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testHashList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testIntegerRangeWithStep[0](1, 10, 1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testIntegerRangeWithStep[1](1, 10, 2, [1, 3, 5, 7, 9])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testIntegerRangeWithStep[2](1, 10, 0, [1, 3, 5, 7, 9])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testIntegerRangeWithStep[3](1, 10, -1, [1, 3, 5, 7, 9])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testLetterify[0](???123, \w{3}\d{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.004"/>
+  <testcase name="testLetterify[1](???123???, \w{3}\d{3}\w{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testLetterify[2](123???, \d{3}\w{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testLetterify[3](1?2?3?, \d{1}\w{1}\d{1}\w{1}\d{1}\w{1})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testLetterify[4](123, \d{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testLetterify[5](154,??$$%123, \d{3}\W{1}\w{2}\W{3}\d{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testLetterifyList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testLongRangeWithStep[0](1, 10, 1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.004"/>
+  <testcase name="testLongRangeWithStep[1](1, 10, 2, [1, 3, 5, 7, 9])" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testMaxDouble" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testMaxFloat" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testMaxInteger" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testMaxLong" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testNumbersRandomRange[0](100, 150)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testNumbersRandomRange[1](100.1, 200.01)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testNumbersRandomRange[2](100.1, 250.1)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testNumbersRandomRange[3](1, 100)" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.002"/>
+  <testcase name="testNumerify[0](###ABC, \d{3}\w{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testNumerify[1](###ABC###, \d{3}\w{3}\d{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.0"/>
+  <testcase name="testNumerify[2](ABC###, \w{3}\d{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testNumerify[3](A#B#C#, \w{1}\d{1}\w{1}\d{1}\w{1}\d{1})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testNumerify[4](ABC, \w{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testNumerify[5](154,#$$%ABC, \d{3}\W{1}\d{1}\W{3}\w{3})" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <testcase name="testNumerifyList" classname="org.napoleon.fabrikotor.AlphanumericTestSuite" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
