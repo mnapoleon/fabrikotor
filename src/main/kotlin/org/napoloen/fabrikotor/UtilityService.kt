@@ -6,7 +6,7 @@ import java.util.Random
 
 class UtilityService(val lang: String = "us", private val random: Random = Random()) {
 
-  val valuesJson:JsonObject = RandomDataKeeper.getJson(lang)
+  //val valuesJson:JsonObject = RandomDataKeeper.getJson(lang)
 
   fun isLess(a: Any, b: Any): Boolean =
     when {

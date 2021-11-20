@@ -64,9 +64,9 @@ class Alphanumeric {
 
   fun randomStrings(minLength: Int, maxLength: Int, amount: Int): List<String> {
     if (minLength != maxLength )
-      return (1 .. amount).map { i -> randomString(randomInt(minLength, maxLength)) }
+      return (1 .. amount).map { _ -> randomString(randomInt(minLength, maxLength)) }
     else
-      return (1 .. amount).map { i -> randomString(minLength) }
+      return (1 .. amount).map { _ -> randomString(minLength) }
   }
 
   fun randomHash(): String = string("0123456789abcdef", 40)
@@ -77,14 +77,14 @@ class Alphanumeric {
 
   fun randomHashList(minLength: Int, maxLength: Int, amount: Int): List<String> {
     if (minLength != maxLength )
-      return (1 .. amount).map { i -> randomHash(randomInt(minLength, maxLength)) }
+      return (1 .. amount).map { _ -> randomHash(randomInt(minLength, maxLength)) }
     else
-      return (1 .. amount).map { i -> randomHash(minLength) }
+      return (1 .. amount).map { _ -> randomHash(minLength) }
   }
 
   fun randomGuid(): String = randomGuid(5)
 
-  fun randomGuid(version: Int): String {
+  private fun randomGuid(version: Int): String {
     val guidPool = "abcdef1234567890"
     val variantPool = "ab89"
     return string(guidPool, 8) + "-" +
@@ -98,9 +98,9 @@ class Alphanumeric {
         string(guidPool, 12)
   }
 
-  fun randomGuidList(): List<String> = (1 .. 100).map { i -> randomGuid(5)}
+  fun randomGuidList(): List<String> = (1 .. 100).map { _ -> randomGuid(5)}
 
-  fun randomGuidList(version: Int, amount: Int): List<String> = (1 .. amount).map { i -> randomGuid(version) }
+  fun randomGuidList(version: Int, amount: Int): List<String> = (1 .. amount).map { _ -> randomGuid(version) }
 
   fun numerify(pattern: String): String {
     return pattern.map { it ->
@@ -112,7 +112,7 @@ class Alphanumeric {
   }
 
   fun numerifyList(pattern: String, amount: Int): List<String> {
-    return (1..amount).map { i -> numerify(pattern) }
+    return (1..amount).map { _ -> numerify(pattern) }
   }
 
   fun letterify(pattern: String): String {
@@ -126,18 +126,18 @@ class Alphanumeric {
   }
 
   fun letterifyList(pattern: String, amount: Int): List<String> {
-    return (1..amount).map { i -> letterify(pattern) }
+    return (1..amount).map { _ -> letterify(pattern) }
   }
 
   private fun string(charSequence: CharSequence, max: Int):String {
     val builder = StringBuilder()
-    (1 .. max).forEach { it ->
+    (1 .. max).forEach { _ ->
       builder.append(charSequence[random.nextInt(charSequence.length - 1)])
     }
     return builder.toString()
   }
 
-  infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
+  private infix fun ClosedRange<Double>.step(step: Double): Iterable<Double> {
     require(start.isFinite())
     require(endInclusive.isFinite())
     require(step > 0.0) { "Step must be positive, was: $step." }
@@ -149,7 +149,7 @@ class Alphanumeric {
     return sequence.asIterable()
   }
 
-  infix fun ClosedRange<Float>.step(step: Float): Iterable<Float> {
+  private infix fun ClosedRange<Float>.step(step: Float): Iterable<Float> {
     require(start.isFinite())
     require(endInclusive.isFinite())
     require(step > 0.0) { "Step must be positive, was: $step." }
