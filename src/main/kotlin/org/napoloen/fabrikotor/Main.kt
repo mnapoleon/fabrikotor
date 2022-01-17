@@ -6,10 +6,11 @@ import com.beust.klaxon.*
 
 fun main() {
     val raw = parse("/data_files/us.json") as JsonObject
+    val utilityService = UtilityService()
+    val centuries = utilityService.getArrayFromJson("centuries")
     //val calendar = raw.obj("calendar")
-    val months = raw?.array<String>("centuries")
 
-    println(getRandomArrayElement(months))
+    println(getRandomArrayElement(centuries))
 }
 
 fun getRandomArrayElement(array: JsonArray<String>?): String {

@@ -3,6 +3,7 @@ package org.napoloen.fabrikotor.entities
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import io.github.classgraph.*
+import org.napoloen.fabrikotor.UtilityService
 import java.lang.IllegalArgumentException
 
 object RandomDataKeeper {
@@ -25,21 +26,25 @@ object RandomDataKeeper {
     private fun parseLanguageDateFiles() {
         val filesList = getResourcesList()
         for (fileName in filesList) {
-            randomDataStorage[fileName.split("\\.")[0]] = parseFile(fileName) as JsonObject
+            val abc = fileName.split(".")[0]
+            randomDataStorage[abc] = parseFile(fileName) as JsonObject
         }
     }
 
     private fun parseFile(fileName: String): Any? {
-        val cls = Parser::class.java
-        return cls.getResourceAsStream(fileName)?.let { inputStream ->
-            return Parser.default().parse(inputStream)
-        }
+        val iStream2 = this.javaClass.classLoader.getResourceAsStream(dataPath+fileName)
+        val iStream = Parser::class.java.getResourceAsStream(dataPath + fileName)
+        return if (iStream2 != null) {
+            Parser.default().parse(iStream2)
+        } else null
     }
 
-    fun getJson(locale: String = "us"): JsonObject {
+    fun getJson(locale: String = "us"): JsonObject? {
         if (randomDataStorage.isEmpty()) {
             parseLanguageDateFiles()
         }
-        return randomDataStorage.getOrElse(locale, throw IllegalArgumentException("You're trying to load $locale language files that don't exist"))
+        print(locale)
+        return randomDataStorage[locale]
+        //randomDataStorage.getOrElse(locale, throw IllegalArgumentException("You're trying to load $locale language files that don't exist"))
     }
 }

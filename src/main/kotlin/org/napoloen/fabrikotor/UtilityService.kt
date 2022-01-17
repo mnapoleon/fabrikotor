@@ -1,12 +1,28 @@
 package org.napoloen.fabrikotor
 
+import com.beust.klaxon.Json
+import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import org.napoloen.fabrikotor.entities.RandomDataKeeper
 import java.util.Random
 
 class UtilityService(val lang: String = "us", private val random: Random = Random()) {
 
-  //val valuesJson:JsonObject = RandomDataKeeper.getJson(lang)
+  private val valuesJson:JsonObject? = RandomDataKeeper.getJson(lang)
+
+  private fun getArrayFromJson(json: JsonObject?, key:String): JsonArray<String>? = json?.array<String>(key)
+
+  fun getArrayFromJson(key: String) = getArrayFromJson(valuesJson, key)
+
+  fun getValueFromJsonArray(key: String): String? {
+    val array = getArrayFromJson(key)
+    return getRandomJsonArrayElement(array)
+  }
+
+  private fun getRandomJsonArrayElement(array: JsonArray<String>?) : String? {
+    val randomIndex = random.nextInt(array?.size ?: 0)
+    return array?.get(randomIndex)
+  }
 
   fun isLess(a: Any, b: Any): Boolean =
     when {

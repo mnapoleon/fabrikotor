@@ -11,4 +11,6 @@ class Calendar(private val alphanumeric: Alphanumeric,
         val randomVal = alphanumeric.randomInt(0,10)
         return if (randomVal < 5) "am" else "pm"
     }
+
+    fun dayOfWeek(): String = utilityService?.getValueFromJsonArray("day_of_week") ?: ""
 }
