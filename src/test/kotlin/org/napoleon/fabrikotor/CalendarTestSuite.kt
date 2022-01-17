@@ -4,6 +4,8 @@ import org.testng.annotations.*
 
 class CalendarTestSuite: BaseTestSuite() {
 
+    val daysOfWeekList = util.getArrayFromJson("day_of_week")
+
     @Test
     fun testAmPm() {
         var amCount = 0
@@ -15,5 +17,10 @@ class CalendarTestSuite: BaseTestSuite() {
         assert(amCount > 0 && pmCount > 0)
     }
 
+    @Test
+    fun testDayOfWeek() {
+        val dayOfWeek = calendar.dayOfWeek()
+        assert(daysOfWeekList?.contains(dayOfWeek) ?: false)
+    }
 
 }
