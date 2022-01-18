@@ -14,11 +14,11 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "joda-time:joda-time:2.10.10"
+    implementation 'joda-time:joda-time:2.10.13'
     implementation 'com.beust:klaxon:5.5'
-    implementation 'io.github.classgraph:classgraph:4.8.113'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'io.github.classgraph:classgraph:4.8.138'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testImplementation group : 'org.testng', name : 'testng', version: '6.8'
 }
 
